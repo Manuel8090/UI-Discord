@@ -28,7 +28,6 @@ Moves = {
 
 -- Variables --
 local Client = game.Players.LocalPlayer
-local whitelist = "juan100m1" or "iiAmReta"
 
 -----------------
 
@@ -43,8 +42,6 @@ wait(Settings.Waittime)
 
 
 local plr = game.Players.LocalPlayer.Name
-
-if plr == whitelist then
 
 Workspace.Camera.FieldOfView = 105
 
@@ -536,8 +533,6 @@ local pet =
         game:GetService("Players").LocalPlayer.Backpack.ServerTraits.Assist:FireServer()
     end
 )
-coroutine.resume(pet)
-
  wait(2)
 
 Target = "Broly BR"
@@ -563,6 +558,7 @@ print(" tracking:  ".. Target)
                 end
             end
         end
+coroutine.resume(pet)
 
 repeat
     wait()
@@ -649,8 +645,4 @@ if Settings.Queue == false then
     print("Queue = false")
 elseif Settings.Queue == true then
     game:GetService("TeleportService"):Teleport(Places[2], LocalPlayer)
-end
-
-else 
-    game.Players.localPlayer:Kick("No Whitelist".. "  Add #bread5969")
 end
