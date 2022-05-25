@@ -535,6 +535,32 @@ local pet =
 )
 coroutine.resume(pet)
 
+wait(2)
+
+Target = "Broly BR"
+_G.tracking = true; 
+if _G.tracking == true then
+print(" tracking:  ".. Target)
+            for i, w in pairs(game.Workspace.Live:GetChildren()) do
+                if string.match(string.lower(w.Name), string.lower(Target)) then
+                    _G.Track = true
+                    while _G.Track and game:GetService("RunService").Heartbeat:wait() do
+                        w:WaitForChild("HumanoidRootPart")
+                        for i, v in pairs(game.Workspace:GetChildren()) do
+                            if v:FindFirstChild("Ki") and v:FindFirstChild("Mesh") then
+                                v.CFrame = w.HumanoidRootPart.CFrame
+                            end
+                        end
+                        for i, v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+                            if v:FindFirstChild("Ki") and v:FindFirstChild("Mesh") then
+                                v.CFrame = w.HumanoidRootPart.CFrame
+                                end
+                        end
+                    end
+                end
+            end
+        end
+
 repeat
     wait()
 until game.Workspace.Live[Client.Name].Ki.Value <= Workspace.Live[Client.Name].Ki.MaxValue * .2 and
