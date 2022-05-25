@@ -1,14 +1,12 @@
 Settings = {
     Earth = false; -- Goes To Earth then Queue --
     Queue = true; -- Goes To Queue --
-    PowerDown = true; -- When low ki it powers down Character --
-    AntiLeach = false; -- leaves if someone joins --
     lateTransform = true; -- Transforms at 76% ki --
     Invisible = false; -- inv in queue --
     Waittime = 1.2; -- wait for the script to start --
     RejoinTime = 160; -- rejoins lmao --
-    Sky = false; -- changes sky --
-    Pet = 50; -- When to use pet --
+    Sky = true; -- changes sky --
+    Pet = 15; -- When to use pet --
     lowgfx = false; -- low graphics --
 }
 
@@ -310,18 +308,6 @@ until game:IsLoaded() and game.Players.LocalPlayer.Character
 if game.PlaceId == Places[3] then
     Settings.Queue = false
     Settings.Earth = false
-end
-
-if Settings.AntiLeach == true and game.PlaceId == Places[3] then
-    game.Players.PlayerAdded:Connect(
-        function(player)
-            print("Player : " .. player.Name .. ("| has entered dimesion BR"))
-            if player then
-                game:GetService("Players").LocalPlayer:Kick("Player Joined")
-                game:GetService("TeleportService"):Teleport(Places[2], LocalPlayer)
-            end
-        end
-    )
 end
 
 game:GetService "RunService".RenderStepped:Connect(
