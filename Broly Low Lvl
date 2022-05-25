@@ -233,7 +233,7 @@ local Places = {
             TweenInfo.new(1, Enum.EasingStyle.Quint),
             {CFrame = Pad}
         ):Play()
-        wait(2)
+        wait(4)
         game:GetService("Workspace").Live[Client.Name].UpperTorso.Anchored = true
     end
 
