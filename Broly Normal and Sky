@@ -1,0 +1,591 @@
+Settings = {
+    Earth = false; -- Goes To Earth then Queue --
+    Queue = true; -- Goes To Queue --
+    lateTransform = true; -- Transforms at 76% ki --
+    Invisible = false; -- inv in queue --
+    Waittime = 1.2; -- wait for the script to start --
+    RejoinTime = 95; -- rejoins lmao --
+    Sky = true; -- changes sky --
+    Pet = 15; -- When to use pet --
+    lowgfx = false; -- low graphics --
+}
+
+Moves = {
+    "Neo Wolf Fang Fist";
+    "Wolf Fang Fist";
+    "Anger Rush";
+    "Flash Skewer";
+    "Meteor Crash";
+    "Deadly Dance";
+    "TS Molotov";
+    "Sweep Kick";
+    "God Slicer";
+    "Chain Destructo Disk";
+    "Blaster Meteor";
+}
+
+-- Variables --
+local Client = game.Players.LocalPlayer
+
+-----------------
+
+-- Queue and Earth Sequence --
+repeat
+    wait()
+until game:IsLoaded() and game.Players.LocalPlayer.Character
+game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart")
+game.Players.LocalPlayer.Character:WaitForChild("Humanoid")
+game.Players.LocalPlayer.Character:WaitForChild("PowerOutput")
+wait(Settings.Waittime)
+
+
+local plr = game.Players.LocalPlayer.Name
+
+Workspace.Camera.FieldOfView = 105
+
+local Places = {
+    536102540, -- Earth --
+    3565304751, -- Queue --
+    2050207304 -- Broly --
+}
+
+    if game.PlaceId == Places[1] then
+        Settings.Earth = false
+        game:GetService("TeleportService"):Teleport(Places[2], LocalPlayer)
+    end
+
+    if game.PlaceId == Places[2] and Settings.Invisible == true then
+        --Tween and destroy body--
+        Settings.Queue = false
+        local BodyDestroy =
+            CFrame.new(
+            2182.6731,
+            238.59996,
+            2064.19141,
+            0.902075589,
+            0,
+            0.431578279,
+            -0,
+            1.00000012,
+            -0,
+            -0.431578338,
+            0,
+            0.902075469
+        )
+        game:GetService("TweenService"):Create(
+            game.Players.LocalPlayer.Character.HumanoidRootPart,
+            TweenInfo.new(1, Enum.EasingStyle.Quint),
+            {CFrame = BodyDestroy}
+        ):Play()
+        wait(.5)
+        game.Workspace.Live[Client.Name].LowerTorso:Destroy()
+        wait()
+        --Tween Pad--
+        number = math.random(1, 7)
+
+        local pads = {
+            one = CFrame.new(-27.2137909, 239.029785, -423.400574, 0, 0, -1, 0, 1, 0, 1, 0, 0),
+            two = CFrame.new(-27.2137909, 239.029785, -291.400574, 0, 0, -1, 0, 1, 0, 1, 0, 0),
+            three = CFrame.new(-27.2137909, 239.029785, -883.400574, 0, 0, -1, 0, 1, 0, 1, 0, 0),
+            four = CFrame.new(-27.2137909, 239.029785, -1050.40063, 0, 0, -1, 0, 1, 0, 1, 0, 0),
+            five = CFrame.new(-27.2137909, 239.029785, -147.400574, 0, 0, -1, 0, 1, 0, 1, 0, 0),
+            six = CFrame.new(-27.2137909, 239.029785, -731.400574, 0, 0, -1, 0, 1, 0, 1, 0, 0),
+            seven = CFrame.new(-27.2137909, 239.029785, -589.400574, 0, 0, -1, 0, 1, 0, 1, 0, 0)
+        }
+
+        if number == 1 then
+            Pad = pads.one
+
+            game:GetService("TweenService"):Create(
+                game.Players.LocalPlayer.Character.HumanoidRootPart,
+                TweenInfo.new(3, Enum.EasingStyle.Quint),
+                {CFrame = Pad}
+            ):Play()
+        elseif number == 2 then
+            Pad = pads.two
+
+            game:GetService("TweenService"):Create(
+                game.Players.LocalPlayer.Character.HumanoidRootPart,
+                TweenInfo.new(3, Enum.EasingStyle.Quint),
+                {CFrame = Pad}
+            ):Play()
+        elseif number == 3 then
+            Pad = pads.three
+
+            game:GetService("TweenService"):Create(
+                game.Players.LocalPlayer.Character.HumanoidRootPart,
+                TweenInfo.new(3, Enum.EasingStyle.Quint),
+                {CFrame = Pad}
+            ):Play()
+        elseif number == 4 then
+            Pad = pads.four
+
+            game:GetService("TweenService"):Create(
+                game.Players.LocalPlayer.Character.HumanoidRootPart,
+                TweenInfo.new(3, Enum.EasingStyle.Quint),
+                {CFrame = Pad}
+            ):Play()
+        elseif number == 5 then
+            Pad = pads.five
+
+            game:GetService("TweenService"):Create(
+                game.Players.LocalPlayer.Character.HumanoidRootPart,
+                TweenInfo.new(3, Enum.EasingStyle.Quint),
+                {CFrame = Pad}
+            ):Play()
+        elseif number == 6 then
+            Pad = pads.six
+
+            game:GetService("TweenService"):Create(
+                game.Players.LocalPlayer.Character.HumanoidRootPart,
+                TweenInfo.new(3, Enum.EasingStyle.Quint),
+                {CFrame = Pad}
+            ):Play()
+        elseif number == 7 then
+            Pad = pads.seven
+
+            game:GetService("TweenService"):Create(
+                game.Players.LocalPlayer.Character.HumanoidRootPart,
+                TweenInfo.new(3, Enum.EasingStyle.Quint),
+                {CFrame = Pad}
+            ):Play()
+            wait(4)
+            game:GetService("Workspace").Live[Client.Name].UpperTorso.Anchored = true
+        end
+    end
+
+    if game.PlaceId == Places[2] and Settings.Invisible == false then
+        print("Invisible off and tween....")
+        Settings.Queue = false
+        number = math.random(1, 7)
+
+        local pads = {
+            one = CFrame.new(-27.2137909, 239.029785, -423.400574, 0, 0, -1, 0, 1, 0, 1, 0, 0),
+            two = CFrame.new(-27.2137909, 239.029785, -291.400574, 0, 0, -1, 0, 1, 0, 1, 0, 0),
+            three = CFrame.new(-27.2137909, 239.029785, -883.400574, 0, 0, -1, 0, 1, 0, 1, 0, 0),
+            four = CFrame.new(-27.2137909, 239.029785, -1050.40063, 0, 0, -1, 0, 1, 0, 1, 0, 0),
+            five = CFrame.new(-27.2137909, 239.029785, -147.400574, 0, 0, -1, 0, 1, 0, 1, 0, 0),
+            six = CFrame.new(-27.2137909, 239.029785, -731.400574, 0, 0, -1, 0, 1, 0, 1, 0, 0),
+            seven = CFrame.new(-27.2137909, 239.029785, -589.400574, 0, 0, -1, 0, 1, 0, 1, 0, 0)
+        }
+
+        if number == 1 then
+            Pad = pads.one
+
+            game:GetService("TweenService"):Create(
+                game.Players.LocalPlayer.Character.HumanoidRootPart,
+                TweenInfo.new(3, Enum.EasingStyle.Quint),
+                {CFrame = Pad}
+            ):Play()
+        elseif number == 2 then
+            Pad = pads.two
+
+            game:GetService("TweenService"):Create(
+                game.Players.LocalPlayer.Character.HumanoidRootPart,
+                TweenInfo.new(3, Enum.EasingStyle.Quint),
+                {CFrame = Pad}
+            ):Play()
+        elseif number == 3 then
+            Pad = pads.three
+
+            game:GetService("TweenService"):Create(
+                game.Players.LocalPlayer.Character.HumanoidRootPart,
+                TweenInfo.new(3, Enum.EasingStyle.Quint),
+                {CFrame = Pad}
+            ):Play()
+        elseif number == 4 then
+            Pad = pads.four
+
+            game:GetService("TweenService"):Create(
+                game.Players.LocalPlayer.Character.HumanoidRootPart,
+                TweenInfo.new(3, Enum.EasingStyle.Quint),
+                {CFrame = Pad}
+            ):Play()
+        elseif number == 5 then
+            Pad = pads.five
+
+            game:GetService("TweenService"):Create(
+                game.Players.LocalPlayer.Character.HumanoidRootPart,
+                TweenInfo.new(3, Enum.EasingStyle.Quint),
+                {CFrame = Pad}
+            ):Play()
+        elseif number == 6 then
+            Pad = pads.six
+
+            game:GetService("TweenService"):Create(
+                game.Players.LocalPlayer.Character.HumanoidRootPart,
+                TweenInfo.new(3, Enum.EasingStyle.Quint),
+                {CFrame = Pad}
+            ):Play()
+        elseif number == 7 then
+            Pad = pads.seven
+
+            game:GetService("TweenService"):Create(
+                game.Players.LocalPlayer.Character.HumanoidRootPart,
+                TweenInfo.new(3, Enum.EasingStyle.Quint),
+                {CFrame = Pad}
+            ):Play()
+        end
+        game:GetService("TweenService"):Create(
+            game.Players.LocalPlayer.Character.HumanoidRootPart,
+            TweenInfo.new(1, Enum.EasingStyle.Quint),
+            {CFrame = Pad}
+        ):Play()
+        wait(2)
+        game:GetService("Workspace").Live[Client.Name].UpperTorso.Anchored = true
+    end
+
+    if Settings.Sky == true then
+        print("Sky is ....")
+        s = Instance.new("Sky")
+        s.Name = "Sky"
+        s.Parent = game.Lighting
+        skybox = 9432984298
+        ID = "http://www.roblox.com/asset/?id=" .. skybox
+        s.SkyboxBk = ID
+        s.SkyboxDn = ID
+        s.SkyboxFt = ID
+        s.SkyboxLf = ID
+        s.SkyboxRt = ID
+        s.SkyboxUp = ID
+        game.Lighting.TimeOfDay = 12.59
+    end
+    
+    if Settings.lowgfx == true then
+        game.Lighting.TimeOfDay = "00:00:00:"
+        for _, v in pairs(workspace:GetDescendants()) do
+            if
+                v.ClassName == "Part" or v.ClassName == "SpawnLocation" or v.ClassName == "WedgePart" or
+                    v.ClassName == "Terrain" or
+                    v.ClassName == "MeshPart"
+             then
+                v.BrickColor = BrickColor.new(155, 155, 155)
+                v.Material = "Plastic"
+            end
+        end
+
+        for _, v in pairs(workspace:GetDescendants()) do
+            if v.ClassName == "Decal" or v.ClassName == "Texture" then
+                v:Destroy()
+            end
+        end
+    end
+    
+    local prompt = assert(game:GetService("CoreGui"):FindFirstChild("promptOverlay", true), "Lol it should work :/")
+    assert(
+        not prompt:FindFirstChild("ErrorPrompt"),
+        prompt:FindFirstChild("ErrorPrompt") and wait(2) and
+            game:GetService("TeleportService"):Teleport(Places[1], game:GetService("Players").LocalPlayer)
+    )
+    prompt.ChildAdded:Connect(
+        function(child)
+            assert(
+                child,
+                typeof(child) == "Instance" and child.Name == "ErrorPrompt" and child.ClassName == "Frame" and wait(2) and
+                    game:GetService("TeleportService"):Teleport(Places[1], game:GetService("Players").LocalPlayer)
+            )
+        end
+    )
+
+    if game.PlaceId == Places [2] then
+        game:GetService "RunService".RenderStepped:Connect(
+    function()
+        local Client = game.Players.LocalPlayer
+        game.Players.LocalPlayer.PlayerGui.HUD.Bottom.SP.Visible = true
+        Client.PlayerGui.HUD.Bottom.SP.Text =
+            "Level:  " ..
+            Client.PlayerGui.HUD.Bottom.Stats.LVL.Val.Text .. "  | Time : " .. math.ceil(Workspace.DistributedGameTime)
+        wait(20)
+        game:GetService("TeleportService"):Teleport(536102540, LocalPlayer)
+    end)
+    end
+    
+repeat
+    wait()
+until game:IsLoaded() and game.Players.LocalPlayer.Character
+
+-- Auto Start --
+if game.PlaceId == Places[3] then
+    Settings.Queue = false
+    Settings.Earth = false
+end
+
+game:GetService "RunService".RenderStepped:Connect(
+    function()
+        local Client = game.Players.LocalPlayer
+        game.Players.LocalPlayer.PlayerGui.HUD.Bottom.SP.Visible = true
+        Client.PlayerGui.HUD.Bottom.SP.Text =
+            "Level:  " ..
+            Client.PlayerGui.HUD.Bottom.Stats.LVL.Val.Text .. "  | Time : " .. math.ceil(Workspace.DistributedGameTime)
+    end
+)
+local found = game.Workspace.Live["Broly BR"]:FindFirstChild("Head")
+local BrolyDead =
+    coroutine.create(
+    function()
+        game:GetService("RunService").Stepped:Connect(
+            function()
+                local Broly = "Broly BR"
+                if game:GetService("Workspace").Live[Broly].Humanoid.Health < 0.05 then
+                    print("Dead ....")
+                    game:GetService("TeleportService"):Teleport(Places[2], LocalPlayer)
+                end
+            end
+        )
+        game:GetService("RunService").Stepped:Connect(
+            function()
+                if game.Workspace.Live[Client.Name].Humanoid.Health <= Client.Character.Humanoid.MaxHealth * .001 then
+                    print("Dead ....")
+                    game:GetService("TeleportService"):Teleport(Places[2], LocalPlayer)
+                end
+            end
+        )
+        if game.PlaceId == Places[3] then
+            wait()
+            if found then
+                print("Broly is Here")
+                if not found then
+                    Client:Kick()
+                    game:GetService("TeleportService"):Teleport(Places[2], LocalPlayer)
+                end
+            end
+        end
+    end
+)
+coroutine.resume(BrolyDead)
+
+
+local CFrameBroly =
+    coroutine.create(
+    function()
+        print("Tween ....")
+        if game.PlaceId == Places[3] then
+            local Client = game.Players.LocalPlayer
+            local Broly = "Broly BR"
+            while wait() do
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                CFrame.new(
+                -16.9422417,
+                -125.982376,
+                -14.4976339,
+                0.995016575,
+                0,
+                0.0997099355,
+                -0,
+                1.00000012,
+                -0,
+                -0.0997099355,
+                0,
+                0.995016575
+            )
+            wait(.1)
+            game:GetService("Workspace").Live[Client.Name].UpperTorso.Anchored = false
+            game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Anchored = true
+            wait(2)
+            game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Anchored = false
+            end
+        end
+    end
+)
+coroutine.resume(CFrameBroly)
+
+repeat
+     wait()
+until CFrameBroly
+
+local CFrameBroly =
+    coroutine.create(
+    function()
+        if game.PlaceId == Places[3] then
+            player = game.Players.LocalPlayer.Character or game.Players.LocalPlayer.CharacterAdded:Wait()
+            local iplr = game.Players.LocalPlayer.Character
+            wait()
+            game.Players.LocalPlayer.Backpack:WaitForChild("Dragon Throw")
+            game.Players.LocalPlayer.Backpack["Dragon Throw"].Activator:WaitForChild("Flip")
+            if (game.Players.LocalPlayer.Backpack:FindFirstChild("Dragon Throw")) then
+                repeat
+                    wait()
+                    iplr.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack["Dragon Throw"])
+                until game.Players.LocalPlayer.Character:FindFirstChild("Dragon Throw")
+                repeat
+                    wait()
+                    iplr["Dragon Throw"]:Activate()
+                until player.Ki.Value < player.Ki.MaxValue
+                repeat
+                    wait()
+                    player["Dragon Throw"].Activator:FindFirstChild("Flip"):Destroy()
+                until not player["Dragon Throw"].Activator:FindFirstChild("Flip"):Destroy()
+        end
+    end
+end)
+coroutine.resume(CFrameBroly)
+
+local noslow =
+    coroutine.create(
+    function()
+        print("No Slow .....")
+        if game.PlaceId == Places[3] then
+            getgenv().destroy = true
+
+            game:GetService("RunService").Stepped:Connect(
+                function()
+                    local GetChildren = game.Players.LocalPlayer.Character:GetChildren()
+                    for i, v in pairs(GetChildren) do
+                        if getgenv().destroy == true then
+                            if
+                                v.Name == "Action" or (v.Name == "Attacking") or (v.Name == "Using") or
+                                    (v.Name == "hyper") or
+                                    (v.Name == "Hyper") or
+                                    (v.Name == "heavy") or
+                                    (v.Name == "KiBlasted") or
+                                    (v.Name == "Killed") or
+                                    (v.Name == "Slow")
+                             then
+                                v:Destroy()
+                            end
+                        end
+                    end
+                end
+            )
+        end
+    end
+)
+if game.Players.LocalPlayer.Character.Block.Value then
+    game.Players.LocalPlayer.Character.Block.Value = false
+end
+coroutine.resume(noslow)
+
+wait(2)
+local SpamMoves =
+    coroutine.create(
+    function()
+        print("Moves ....")
+        _G.spam = true
+        while _G.spam == true do
+            local client = game.Players.LocalPlayer
+            for i, v in pairs(client.Backpack:GetChildren()) do
+                if table.find(Moves, v.Name) then
+                    v.Parent = client.Character
+                    v:Activate()
+                    v:Deactivate()
+                    wait(0.1)
+                    v.Parent = client.Backpack
+                end
+            end
+        end
+    end
+)
+coroutine.resume(SpamMoves)
+
+local beans =
+    coroutine.create(
+    function()
+        print("jars are working...")
+        if game.PlaceId == Places[3] then
+            while wait() do
+                local args = {
+                    [1] = true
+                }
+
+                game:GetService("Players").LocalPlayer.Backpack.ServerTraits.EatSenzu:FireServer(unpack(args))
+            end
+        end
+    end)
+coroutine.resume(beans)
+
+local lateTransform =
+    coroutine.create(
+    function()
+        if Settings.lateTransform == true then
+            repeat
+                wait()
+            until game.Workspace.Live[Client.Name].Ki.Value <= Workspace.Live[Client.Name].Ki.MaxValue * .70
+            local args = {[1] = "g"}
+            print("Android Form ..")
+            game:GetService("Players").LocalPlayer.Backpack.ServerTraits.Transform:FireServer(unpack(args))
+        end
+    end
+)
+coroutine.resume(lateTransform)
+
+local pet =
+    coroutine.create(
+    function()
+        wait(Settings.Pet)
+        game:GetService("Players").LocalPlayer.Backpack.ServerTraits.Assist:FireServer()
+    end
+)
+coroutine.resume(pet)
+
+local GoGod =
+        coroutine.create(
+        function()
+            wait(2)
+            local God = true
+            while God == true do
+                wait()
+                if
+                    game.Workspace.Live[Client.Name].Humanoid.Health <= Client.Character.Humanoid.MaxHealth * .2 and
+                        game.Workspace.Live[Client.Name].Ki.Value <= Workspace.Live[Client.Name].Ki.MaxValue * .2
+                 then
+                    Client.Backpack.ServerTraits.Transform:FireServer("g")
+                    wait()
+                    Client.Backpack.ServerTraits.Transform:FireServer("h")
+                    wait()
+                    Client.Backpack.ServerTraits.Transform:FireServer("g")
+                end
+            end
+        end
+    )
+
+    coroutine.resume(GoGod)
+
+Target = "Broly BR"
+_G.tracking = true; 
+if _G.tracking == true then
+print(" tracking:  ".. Target)
+            for i, w in pairs(game.Workspace.Live:GetChildren()) do
+                if string.match(string.lower(w.Name), string.lower(Target)) then
+                    _G.Track = true
+                    while _G.Track and game:GetService("RunService").Heartbeat:wait() do
+                        w:WaitForChild("HumanoidRootPart")
+                        for i, v in pairs(game.Workspace:GetChildren()) do
+                            if v:FindFirstChild("Ki") and v:FindFirstChild("Mesh") then
+                                v.CFrame = w.HumanoidRootPart.CFrame
+                            end
+                        end
+                        for i, v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+                            if v:FindFirstChild("Ki") and v:FindFirstChild("Mesh") then
+                                v.CFrame = w.HumanoidRootPart.CFrame
+                                end
+                        end
+                    end
+                end
+            end
+    end
+    
+local rejoin =
+    coroutine.create(
+    function()
+        print("waiting for time ..")
+        if game.PlaceId == Places[3] then
+            wait(Settings.RejoinTime)
+            print("rejoin active ..")
+            game:GetService("TeleportService"):Teleport(Places[2], LocalPlayer)
+        end
+    end
+)
+coroutine.resume(rejoin)
+
+
+
+if Settings.Earth == false then
+    print("earth = false")
+elseif Settings.Earth == true then
+    game:GetService("TeleportService"):Teleport(Places[1], LocalPlayer)
+end
+if Settings.Queue == false then
+    print("Queue = false")
+elseif Settings.Queue == true then
+    game:GetService("TeleportService"):Teleport(Places[2], LocalPlayer)
+end
