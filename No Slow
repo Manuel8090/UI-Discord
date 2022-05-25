@@ -1,0 +1,19 @@
+game:GetService("RunService").Stepped:Connect(function()
+local GetChildren = game.Players.LocalPlayer.Character:GetChildren()
+        for i, v in pairs (GetChildren) do
+            if v.Name == "Action" or 
+            (v.Name == "Attacking") or 
+            (v.Name == "Using") or 
+            (v.Name == "hyper") or 
+            (v.Name == "Hyper") or 
+            (v.Name == "heavy") or 
+            (v.Name == "KiBlasted") or 
+            (v.Name == "Killed") or 
+            (v.Name == "Slow") then v:Destroy();
+                end
+         end
+        end)
+        local blockvalue = game.Players.LocalPlayer.Character.Block.Value
+        if blockvalue then 
+          blockvalue = false
+end
