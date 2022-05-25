@@ -5,7 +5,7 @@ Settings = {
     Invisible = false; -- inv in queue --
     Waittime = 1.2; -- wait for the script to start --
     RejoinTime = 160; -- rejoins lmao --
-    Sky = true; -- changes sky --
+    Sky = false; -- changes sky --
     Pet = 15; -- When to use pet --
     lowgfx = false; -- low graphics --
 }
