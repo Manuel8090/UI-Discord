@@ -620,7 +620,3 @@ if Settings.Queue == false then
 elseif Settings.Queue == true then
     game:GetService("TeleportService"):Teleport(Places[2], LocalPlayer)
 end
-
-else 
-    game.Players.localPlayer:Kick("No Whitelist".. "  Add #bread5969")
-end
